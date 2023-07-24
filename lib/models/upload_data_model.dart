@@ -21,6 +21,7 @@ class UploadableDataUrls {
     };
   }
 
+
   UploadableDataUrls.fromDataSnapshot({
     required DocumentSnapshot<Map<String, dynamic>> documentSnapshot,
   })  : imageUrl = documentSnapshot.data()!['imageUrl'],

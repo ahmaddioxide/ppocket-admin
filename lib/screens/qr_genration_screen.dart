@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ppocket_admin/qr_generation_controller.dart';
+import 'package:ppocket_admin/controllers/qr_generation_controller.dart';
 
 class QrGenerationScreen extends StatefulWidget {
   const QrGenerationScreen({super.key});

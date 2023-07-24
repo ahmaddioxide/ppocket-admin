@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FireStoreServices {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  static saveUrlsToFirestore(uploadableDataUrls) async {
+    await _firestore.collection('urls').add(uploadableDataUrls.toMap());
+  }
 }

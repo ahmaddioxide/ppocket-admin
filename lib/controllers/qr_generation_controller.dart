@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:ppocket_admin/models/upload_data_model.dart';
+import 'package:ppocket_admin/services/firestore_services.dart';
 import 'package:ppocket_admin/services/storage_services.dart';
 
 class QrGenerationController extends GetxController {
@@ -8,7 +9,6 @@ class QrGenerationController extends GetxController {
 
   Future<List<PlatformFile>?> pickFileFromPc() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
-
       // initialDirectory:
       allowMultiple: true,
       type: FileType.custom,
@@ -17,10 +17,6 @@ class QrGenerationController extends GetxController {
     if (result != null) {
       final file = result.files.first;
       print(file.name);
-      // print(file.bytes);
-      // print(file.size);
-      // print(file.extension);
-      // print(file.path);
       return result.files;
     } else {
       return null;
@@ -38,17 +34,18 @@ class QrGenerationController extends GetxController {
   }
 
   Future<void> pickUploadFiles() async {
-    pickFileFromPc().then((value) async {
-      print(value![0].name);
-      print(value![1].name);
+    pickFileFromPc().then((pickedFilesList) {
+      print(pickedFilesList![0].name);
+      print(pickedFilesList[1].name);
+      uploadFilesToStorage(pickedFilesList).then((uploadedUrlsObject) {
+        print(
+            "Image URL to Upload in Firestore " + uploadedUrlsObject.imageUrl);
+        print('Text URL to store in FireStore' + uploadedUrlsObject.textUrl);
 
-      await uploadFilesToStorage(value).then((value){
-        print(value.imageUrl);
-        print(value.textUrl);
+        FireStoreServices.saveUrlsToFirestore(uploadedUrlsObject).then((_) {
+          print("Urls saved to firestore");
+        });
       });
     });
-
-    // pickFileFromPc().then(
-    //     (value) => uploadFilesToStorage(value).then((value) => print(value.imageUrl)));
   }
 }

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "736475837178",
+    "project_id": "paperlesspocket-5418",
+    "storage_bucket": "paperlesspocket-5418.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736475837178:android:357dfe0424df94b2c38f43",
+        "android_client_info": {
+          "package_name": "com.atinity.ppocket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736475837178-n3b4his3dnfm0o7mdn01e31kfn3snpkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTAOYfgKpAlVWywdLVefNwS4KmcGzlUKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736475837178-n3b4his3dnfm0o7mdn01e31kfn3snpkc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "736475837178-iqirkar43cac6go47kk9c5k2sh0papsp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.atinity.ppocket"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736475837178:android:a90b402dfc30aa87c38f43",
+        "android_client_info": {
+          "package_name": "com.atinity.ppocket_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736475837178-n3b4his3dnfm0o7mdn01e31kfn3snpkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTAOYfgKpAlVWywdLVefNwS4KmcGzlUKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736475837178-n3b4his3dnfm0o7mdn01e31kfn3snpkc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "736475837178-iqirkar43cac6go47kk9c5k2sh0papsp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.atinity.ppocket"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
