@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ppocket_admin/controllers/qr_generation_controller.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class QrGenerationScreen extends StatefulWidget {
   const QrGenerationScreen({super.key});
@@ -41,8 +42,18 @@ class _QrGenerationScreenState extends State<QrGenerationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Obx(() {
+                debugPrint(
+                    "isQrGenerated value is ${qrGenerationController.isQrGenerated.value}");
+                debugPrint(
+                    "qrData value is ${qrGenerationController.qrData.value}");
+
                 return qrGenerationController.isQrGenerated.value
-                    ? const Text("QR Code Generated")
+                    ? QrImageView(
+                        backgroundColor: Colors.white,
+                        data: qrGenerationController.qrData.value,
+                        version: QrVersions.auto,
+                        size: 200.0,
+                      )
                     : Container(
                         height: height * 0.4,
                         width: height * 0.4,
@@ -70,17 +81,6 @@ class _QrGenerationScreenState extends State<QrGenerationScreen> {
                       );
               }),
 
-              // SizedBox(
-              //   width: width*0.2,
-              //   height: height*0.1,
-              //   child: ElevatedButton(onPressed: (){}, child:const Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //     Icon(Icons.qr_code),
-              //     SizedBox(width: 10,),
-              //     Text("Generate QR Code")
-              //   ],) ),
-              // )
             ],
           ),
         ));

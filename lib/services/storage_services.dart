@@ -9,7 +9,7 @@ class FirebaseStorageService {
   static Future<UploadableDataUrls> uploadFilesToStorage(
       List<PlatformFile>? filesList) async {
     final List<UploadableDataUrls> urlsList = [];
-    UploadableDataUrls urls = UploadableDataUrls(imageUrl: '', textUrl: '');
+    UploadableDataUrls urls = UploadableDataUrls(imageUrl: '', textUrl: '',total: 0);
 
     String file0ContentType = '';
     String file1ContentType = '';
