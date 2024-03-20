@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:ppocket_admin/models/upload_data_model.dart';
@@ -9,7 +10,12 @@ class FirebaseStorageService {
   static Future<UploadableDataUrls> uploadFilesToStorage(
       List<PlatformFile>? filesList) async {
     final List<UploadableDataUrls> urlsList = [];
-    UploadableDataUrls urls = UploadableDataUrls(imageUrl: '', textUrl: '',total: 0);
+    UploadableDataUrls urls = UploadableDataUrls(
+      imageUrl: '',
+      txtUrl: '',
+      total: 0,
+      createdAt: Timestamp.now(),
+    );
 
     String file0ContentType = '';
     String file1ContentType = '';
