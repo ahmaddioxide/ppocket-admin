@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
             if (username == 'admin') {
               return BugReportScreen();
             } else {
-              return QrGenerationScreen();
+              return const QrGenerationScreen();
             }
           },
         ),
@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -54,22 +54,26 @@ class _LoginPageState extends State<LoginPage> {
           children: <Widget>[
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Username',
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
               ),
             ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
               onPressed: _login,
-              child: Text('Login'),
+              child: const Text('Login', 
+              style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
