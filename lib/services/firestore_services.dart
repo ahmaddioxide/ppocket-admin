@@ -22,9 +22,9 @@ static Future<List<Map<String, dynamic>>> getAllBugReports() async {
     final List<Map<String, dynamic>> bugReports = [];
 
     await bugReportsCollection.get().then((value) {
-      value.docs.forEach((doc) {
+      for (var doc in value.docs) {
         bugReports.add(doc.data());
-      });
+      }
     }).onError((error, stackTrace) {
       print('Error Getting Bug Reports from FireStore: $error');
       

@@ -2,39 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ppocket_admin/controllers/bug_report_controller.dart';
 
-class BugReportsScreen extends StatelessWidget {
-  final BugReportsController bugReportsController = Get.put(BugReportsController());
+class BugReportScreen extends StatelessWidget {
+  final BugReportController bugReportController =
+      Get.put(BugReportController());
 
   @override
   Widget build(BuildContext context) {
+    // Fetch bug reports when screen initializes
+    bugReportController.getBugReports();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bug Reports'),
+        title: const Text('Bug Reports'),
       ),
       body: Obx(
-        () => bugReportsController.isLoading.value
-            ? Center(
-                child: CircularProgressIndicator(),
+        () => bugReportController.bugReports.isEmpty
+            ? const Center(
+                child: Text(
+                  'No bug reports found',
+                  style: TextStyle(fontSize: 18.0, color: Colors.grey),
+                ),
               )
-            : bugReportsController.isError.value
-                ? Center(
-                    child: Text(bugReportsController.errorMessage.value),
-                  )
-                : bugReportsController.bugReports.isEmpty
-                    ? Center(
-                        child: Text('No Bug Reports found'),
-                      )
-                    : ListView.builder(
-                        itemCount: bugReportsController.bugReports.length,
-                        itemBuilder: (context, index) {
-                          final report = bugReportsController.bugReports[index];
-                          return ListTile(
-                            title: Text(report['title']),
-                            subtitle: Text(report['description']),
-                            // Add more fields if needed
-                          );
-                        },
+            : ListView.builder(
+                itemCount: bugReportController.bugReports.length,
+                itemBuilder: (context, index) {
+                  final bugReport = bugReportController.bugReports[index];
+                  return Card(
+                    elevation: 3.0,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 10.0,
+                      vertical: 5.0,
+                    ),
+                    child: ListTile(
+                      title: Text(
+                        bugReport['bug'],
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
+                      subtitle: Text('Reported by: ${bugReport['userId']}'),
+                      
+                    ),
+                  );
+                },
+              ),
       ),
     );
   }

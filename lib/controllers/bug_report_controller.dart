@@ -1,30 +1,25 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:ppocket_admin/services/firestore_services.dart';
+import 'package:ppocket_admin/components/snackbars.dart';
+import 'package:ppocket_admin/services/database_service.dart';
 
-class BugReportsController extends GetxController {
-  var bugReports = <Map<String, dynamic>>[].obs;
-  var isLoading = false.obs;
-  var isError = false.obs;
-  var errorMessage = ''.obs;
+class BugReportController extends GetxController {
+  final TextEditingController bugDescriptionController =
+      TextEditingController();
+  RxList bugReports = [].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchBugReports();
-  }
 
-  Future<void> fetchBugReports() async {
-    isLoading.value = true;
-    isError.value = false;
-    errorMessage.value = '';
-
+  // Get all bug reports
+  Future<void> getBugReports() async {
     try {
-      bugReports.value = await FireStoreServices.getAllBugReports();
-    } catch (e) {
-      isError.value = true;
-      errorMessage.value = "Error fetching bug reports: $e";
-    } finally {
-      isLoading.value = false;
+      final List<Map<String, dynamic>> reports =
+          await FireStoreService.getAllBugReports();
+      bugReports.assignAll(reports);
+    } catch (error) {
+      AppSnackBar.errorSnackbar(
+        title: 'Error',
+        message: 'Failed to get bug reports: $error',
+      );
     }
   }
 }
