@@ -13,16 +13,22 @@ class BugReportScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bug Reports'),
+        backgroundColor: const Color(0xff098670),
+        title: const Text('Bug Reports',style: TextStyle(color: Colors.white),),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout,color: Colors.white,),
+            onPressed: () {
+              Get.back();
+
+            },
+          ),
+        ],
       ),
       body: Obx(
         () => bugReportController.bugReports.isEmpty
             ? const Center(
-                child: Text(
-                  'No bug reports found',
-                  style: TextStyle(fontSize: 18.0, color: Colors.grey),
-                ),
-              )
+                child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: bugReportController.bugReports.length,
                 itemBuilder: (context, index) {

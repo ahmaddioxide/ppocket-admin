@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:ppocket_admin/screens/admin/bug_reports_screen.dart';
 import 'package:ppocket_admin/screens/login/login_screen.dart';
-import 'package:ppocket_admin/screens/qr_genration_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -23,9 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'PPocket POS Integration',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
       home: LoginPage(),

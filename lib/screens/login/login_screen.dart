@@ -45,31 +45,48 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        backgroundColor: const Color(0xff098670),
+        title: const Text('POS Integration', style: TextStyle(color: Colors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(
-                labelText: 'Username',
+            const SizedBox(width: double.infinity,),
+            Image.asset('assets/ppocket_land.png', width: 250, height: 100,),
+            SizedBox(
+              width: 500.0,
+              child: TextFormField(
+
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
+
+                ),
               ),
             ),
             const SizedBox(height: 20.0),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
+            SizedBox(
+              width: 500,
+              child: TextFormField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
+
+                ),
               ),
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: 30.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: const Color(0xff098670),
+                minimumSize: const Size(500, 55),
+
+
               ),
               onPressed: _login,
               child: const Text('Login', 

@@ -27,9 +27,9 @@ class _QrGenerationScreenState extends State<QrGenerationScreen> {
         ),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.green,
+          backgroundColor: const Color(0xff098670),
           title: const Text(
-            'QR Generation Screen',
+            'QR Generation',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           centerTitle: true,
@@ -37,7 +37,7 @@ class _QrGenerationScreenState extends State<QrGenerationScreen> {
         body: Container(
           height: height,
           width: width,
-          color: Colors.green,
+          color: const Color(0xff098670),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -80,7 +80,15 @@ class _QrGenerationScreenState extends State<QrGenerationScreen> {
                         ),
                       );
               }),
-
+              SizedBox(height: 20,),
+              const Text(
+                'Scan this QR to get the receipt',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
         ));
